@@ -115,6 +115,13 @@ class strongswan::config (
     show_diff => false,
     content   => template('strongswan/ipsec.secrets.erb');
 
+    '/etc/ipsec.conf':
+    ensure    => file,
+    owner     => 'root',
+    group     => 'root',
+    mode      => '0600',
+    show_diff => false,
+    content   => template('strongswan/ipsec.conf.erb');
   }
 
   # Merge the supplied charon configuration options and generate the charon
