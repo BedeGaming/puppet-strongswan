@@ -47,6 +47,15 @@ class strongswan::config (
     mode    => '0600',
     content => template('strongswan/ipsec.conf.erb');
 
+    '/etc/strongswan/ipsec.secrets':
+    ensure  => file,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0600',
+    content => template('strongswan/ipsec.secrets.erb');
+
+
+
     '/etc/strongswan/ipsec.d/':
     ensure => directory,
     owner  => 'root',
